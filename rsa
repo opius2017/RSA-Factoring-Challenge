@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-e
+
 check_factor()
 {
 	if [ $# -ne 3 ];
@@ -45,4 +45,4 @@ else
                 check_factor $result
 
         done < "$1"
-fik
+fi
