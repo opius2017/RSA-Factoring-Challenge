@@ -7,7 +7,7 @@ import math
 def read_numbers_from_file(file_name):
     """Reads numbers from a file and returns them as a list"""
     try:
-        with open(file_name, "r", encoding="utf-8") as file:
+        with open(test00, "r", encoding="utf-8") as file:
             return [int(line.strip()) for line in file]
     except (FileNotFoundError, ValueError) as e:
         print(f"Error reading file: {str(e)}")
@@ -35,6 +35,9 @@ def print_factors(n, factors):
 
 def factorize_numbers(numbers):
     """Factorizes a list of numbers and prints the results"""
+    if not numbers:
+        print("No numbers to factorize")
+        return
     for n in numbers:
         factors = factorize(n)
         print_factors(n, factors)
