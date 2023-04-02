@@ -1,45 +1,36 @@
 #!/usr/bin/env python3
-"""Factor numbers in a file"""
 
 import sys
-import math
 
 
-def read_numbers_from_file(file_name: str) -> list[int]:
-    """Read numbers from a file and return them as a list of integers"""
-    with open(file_name, "r", encoding="utf-8") as file:
+def read_numbers_from_file(file_name):
+    with open(file_name, "r") as file:
         lines = file.readlines()
-    numbers_to_factor = []
+    numbers = []
     for line in lines:
-        numbers_to_factor.append(int(line))
-    return numbers_to_factor
+        numbers.append(int(line.strip()))
+    return numbers
 
 
-def find_factors(n: int) -> None:
-    """Print the prime factors of the given integer n"""
-    for i in range(2, int(math.sqrt(n))+1):
-        while n % i == 0:
-            print(f"{n}={i}*{n//i}")
-            n //= i
-    if n > 1:
-        print(f"{n}={n}*1")
+def find_factorization(n):
+    for i in range(2, n):
+        if n % i == 0:
+            return f"{n}={i}*{n//i}"
+    return None
 
 
-def factor_numbers_in_list(numbers: list[int]) -> None:
-    """Factor each number in the given list"""
-    for number in numbers:
-        find_factors(number)
-
-
-def main() -> None:
-    """Parse the command line arguments and run the program"""
-    if len(sys.argv) == 2:
-        numbers = read_numbers_from_file(sys.argv[1])
-        factor_numbers_in_list(numbers)
-    else:
-        print("Usage: python factor_numbers.py filename")
+def factorize_numbers(numbers):
+    for n in numbers:
+        factorization = find_factorization(n)
+        if factorization:
+            print(factorization)
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print(f"Usage: {sys.argv[0]} <file>")
+        sys.exit(1)
+    file_name = sys.argv[1]
+    numbers = read_numbers_from_file(file_name)
+    factorize_numbers(numbers)
 
