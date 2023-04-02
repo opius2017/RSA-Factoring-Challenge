@@ -2,6 +2,7 @@
 
 import sys
 
+
 def factorize(n):
     """
     Factorize a number n into two smaller numbers.
@@ -11,6 +12,7 @@ def factorize(n):
         if n % i == 0:
             return i, n // i
     return None
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -25,3 +27,4 @@ if __name__ == '__main__':
             if factors is not None:
                 p, q = factors
                 print(f"{n}={p}*{q}")
+
