@@ -26,5 +26,5 @@ if __name__ == '__main__':
             factors = factorize(n)
             if factors is not None:
                 p, q = factors
-                print(f"{n}={p}*{q}")
+                print(f"{n}={q}*{p}")
 
